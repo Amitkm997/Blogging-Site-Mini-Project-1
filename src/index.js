@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 mongoose
   .connect(
-    "mongodb+srv://anirudhsagar:fgAGHtahZoVNyIR3@cluster0.btvli.mongodb.net/project-1",
+    "mongodb+srv://anirudhsagar:fgAGHtahZoVNyIR3@cluster0.btvli.mongodb.net/project-1(blogs)",
     {
       useNewUrlParser: true,
     }
@@ -19,6 +19,6 @@ mongoose
 
 app.use("/", route);
 
-app.listen(process.env.PORT || 5000, function () {
-  console.log("Express app running on port " + (process.env.PORT || 5000));
+app.listen(process.env.PORT || 3000, function () {
+  console.log("Express app running on port " + (process.env.PORT || 3000));
 });

@@ -111,7 +111,6 @@ const putBlogs = async (req, res) => {
           title: data.title,
           body: data.body,
           category: data.category,
-          
           isPublished: true,
         },
         $push: {
@@ -143,7 +142,7 @@ const deleteBlog = async (req, res) => {
         .status(400)
         .send({ status: false, msg: "No such blog available to delete" });
     const data = await blogsModel.findOneAndUpdate(
-      { _id: blogId },
+      { _id: blogId },//condition 
       { $set: { isDeleted: true, deletedAt: dateTime } },
       { new: true }
     );
