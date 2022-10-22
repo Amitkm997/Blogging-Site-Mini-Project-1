@@ -65,7 +65,7 @@ const CreateBlog = async (req, res) => {
 const getBlogs = async (req, res) => {
   try {
     let queryData = req.query;
-    queryData["isPublished"] = false;
+    queryData["isPublished"] = true;
     queryData["isDeleted"] = false;
 
     let authorId = req.query.authorId;
@@ -81,10 +81,13 @@ const getBlogs = async (req, res) => {
         .send({ status: false, msg: "please enter valid authorID" });
 
     const data = await blogsModel.find(queryData);
-
-    if (data.length == 0)
+    if (data.length == 0){
       return res.status(404).send({ status: false, msg: "No data found" });
-    return res.status(200).send({ status: true, data: data });
+    }else{
+      return res.status(200).send({ status: true, data: data });
+    }
+      
+    
   } catch (err) {
     res.status(500).send({ status: false, msg: err.message });
   }
